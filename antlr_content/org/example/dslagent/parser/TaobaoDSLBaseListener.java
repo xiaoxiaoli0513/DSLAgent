@@ -185,6 +185,42 @@ public class TaobaoDSLBaseListener implements TaobaoDSLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterRecommendFor(TaobaoDSLParser.RecommendForContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRecommendFor(TaobaoDSLParser.RecommendForContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRecommendSeason(TaobaoDSLParser.RecommendSeasonContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRecommendSeason(TaobaoDSLParser.RecommendSeasonContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRecommendMaxPrice(TaobaoDSLParser.RecommendMaxPriceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRecommendMaxPrice(TaobaoDSLParser.RecommendMaxPriceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCheckStockStatement(TaobaoDSLParser.CheckStockStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -221,61 +257,37 @@ public class TaobaoDSLBaseListener implements TaobaoDSLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAddSubExpr(TaobaoDSLParser.AddSubExprContext ctx) { }
+	@Override public void enterExpression(TaobaoDSLParser.ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAddSubExpr(TaobaoDSLParser.AddSubExprContext ctx) { }
+	@Override public void exitExpression(TaobaoDSLParser.ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx) { }
+	@Override public void enterAdditiveExpression(TaobaoDSLParser.AdditiveExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx) { }
+	@Override public void exitAdditiveExpression(TaobaoDSLParser.AdditiveExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx) { }
+	@Override public void enterMultiplicativeExpression(TaobaoDSLParser.MultiplicativeExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterMulDivExpr(TaobaoDSLParser.MulDivExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitMulDivExpr(TaobaoDSLParser.MulDivExprContext ctx) { }
+	@Override public void exitMultiplicativeExpression(TaobaoDSLParser.MultiplicativeExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -300,6 +312,42 @@ public class TaobaoDSLBaseListener implements TaobaoDSLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitIdExpr(TaobaoDSLParser.IdExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

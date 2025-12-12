@@ -95,6 +95,27 @@ public interface TaobaoDSLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRecommendStatement(TaobaoDSLParser.RecommendStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code recommendFor}
+	 * labeled alternative in {@link TaobaoDSLParser#recommendOption}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRecommendFor(TaobaoDSLParser.RecommendForContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code recommendSeason}
+	 * labeled alternative in {@link TaobaoDSLParser#recommendOption}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRecommendSeason(TaobaoDSLParser.RecommendSeasonContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code recommendMaxPrice}
+	 * labeled alternative in {@link TaobaoDSLParser#recommendOption}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRecommendMaxPrice(TaobaoDSLParser.RecommendMaxPriceContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link TaobaoDSLParser#checkStockStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -113,54 +134,58 @@ public interface TaobaoDSLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIntentRule(TaobaoDSLParser.IntentRuleContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code addSubExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * Visit a parse tree produced by {@link TaobaoDSLParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAddSubExpr(TaobaoDSLParser.AddSubExprContext ctx);
+	T visitExpression(TaobaoDSLParser.ExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code literalExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * Visit a parse tree produced by {@link TaobaoDSLParser#additiveExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx);
+	T visitAdditiveExpression(TaobaoDSLParser.AdditiveExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code getStockExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * Visit a parse tree produced by {@link TaobaoDSLParser#multiplicativeExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code getPriceExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code mulDivExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMulDivExpr(TaobaoDSLParser.MulDivExprContext ctx);
+	T visitMultiplicativeExpression(TaobaoDSLParser.MultiplicativeExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code parenExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitParenExpr(TaobaoDSLParser.ParenExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code idExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitIdExpr(TaobaoDSLParser.IdExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code literalExpr}
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code getPriceExpr}
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code getStockExpr}
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code intLiteral}
 	 * labeled alternative in {@link TaobaoDSLParser#literal}.

@@ -148,6 +148,42 @@ public interface TaobaoDSLListener extends ParseTreeListener {
 	 */
 	void exitRecommendStatement(TaobaoDSLParser.RecommendStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code recommendFor}
+	 * labeled alternative in {@link TaobaoDSLParser#recommendOption}.
+	 * @param ctx the parse tree
+	 */
+	void enterRecommendFor(TaobaoDSLParser.RecommendForContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code recommendFor}
+	 * labeled alternative in {@link TaobaoDSLParser#recommendOption}.
+	 * @param ctx the parse tree
+	 */
+	void exitRecommendFor(TaobaoDSLParser.RecommendForContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code recommendSeason}
+	 * labeled alternative in {@link TaobaoDSLParser#recommendOption}.
+	 * @param ctx the parse tree
+	 */
+	void enterRecommendSeason(TaobaoDSLParser.RecommendSeasonContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code recommendSeason}
+	 * labeled alternative in {@link TaobaoDSLParser#recommendOption}.
+	 * @param ctx the parse tree
+	 */
+	void exitRecommendSeason(TaobaoDSLParser.RecommendSeasonContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code recommendMaxPrice}
+	 * labeled alternative in {@link TaobaoDSLParser#recommendOption}.
+	 * @param ctx the parse tree
+	 */
+	void enterRecommendMaxPrice(TaobaoDSLParser.RecommendMaxPriceContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code recommendMaxPrice}
+	 * labeled alternative in {@link TaobaoDSLParser#recommendOption}.
+	 * @param ctx the parse tree
+	 */
+	void exitRecommendMaxPrice(TaobaoDSLParser.RecommendMaxPriceContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link TaobaoDSLParser#checkStockStatement}.
 	 * @param ctx the parse tree
 	 */
@@ -178,89 +214,95 @@ public interface TaobaoDSLListener extends ParseTreeListener {
 	 */
 	void exitIntentRule(TaobaoDSLParser.IntentRuleContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code addSubExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * Enter a parse tree produced by {@link TaobaoDSLParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterAddSubExpr(TaobaoDSLParser.AddSubExprContext ctx);
+	void enterExpression(TaobaoDSLParser.ExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code addSubExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * Exit a parse tree produced by {@link TaobaoDSLParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitAddSubExpr(TaobaoDSLParser.AddSubExprContext ctx);
+	void exitExpression(TaobaoDSLParser.ExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code literalExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * Enter a parse tree produced by {@link TaobaoDSLParser#additiveExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx);
+	void enterAdditiveExpression(TaobaoDSLParser.AdditiveExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code literalExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * Exit a parse tree produced by {@link TaobaoDSLParser#additiveExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx);
+	void exitAdditiveExpression(TaobaoDSLParser.AdditiveExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code getStockExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * Enter a parse tree produced by {@link TaobaoDSLParser#multiplicativeExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx);
+	void enterMultiplicativeExpression(TaobaoDSLParser.MultiplicativeExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code getStockExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * Exit a parse tree produced by {@link TaobaoDSLParser#multiplicativeExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code getPriceExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code getPriceExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code mulDivExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterMulDivExpr(TaobaoDSLParser.MulDivExprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code mulDivExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitMulDivExpr(TaobaoDSLParser.MulDivExprContext ctx);
+	void exitMultiplicativeExpression(TaobaoDSLParser.MultiplicativeExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code parenExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
 	void enterParenExpr(TaobaoDSLParser.ParenExprContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code parenExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
 	void exitParenExpr(TaobaoDSLParser.ParenExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code idExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
 	void enterIdExpr(TaobaoDSLParser.IdExprContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code idExpr}
-	 * labeled alternative in {@link TaobaoDSLParser#expression}.
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
 	void exitIdExpr(TaobaoDSLParser.IdExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code literalExpr}
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code literalExpr}
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLiteralExpr(TaobaoDSLParser.LiteralExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code getPriceExpr}
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code getPriceExpr}
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGetPriceExpr(TaobaoDSLParser.GetPriceExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code getStockExpr}
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code getStockExpr}
+	 * labeled alternative in {@link TaobaoDSLParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGetStockExpr(TaobaoDSLParser.GetStockExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code intLiteral}
 	 * labeled alternative in {@link TaobaoDSLParser#literal}.
