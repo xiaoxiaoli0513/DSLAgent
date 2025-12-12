@@ -1,7 +1,5 @@
 grammar TaobaoDSL;
 
-
-
 program: (dialogueScenario | productCatalog)* EOF;
 
 // ========== 商品目录 ==========
@@ -47,8 +45,13 @@ waitStatement: 'wait' '(' STRING ')' ';';
 // 商品相关语句
 recommendStatement:
     'recommend' '('
-    ('for' STRING)? (',' 'season' seasonType)? (',' 'maxPrice' INT)?
+    ( recommendOption (',' recommendOption)* )?
     ')' ';';
+
+recommendOption:
+    'for' STRING          # recommendFor
+    | 'season' seasonType  # recommendSeason
+    | 'maxPrice' INT       # recommendMaxPrice;
 
 checkStockStatement:
     'checkStock' '(' ID (',' INT)? ')' ';';
@@ -62,11 +65,20 @@ intentRule:
 
 // ========== 表达式 ==========
 expression:
+    additiveExpression;
+
+additiveExpression:
+    multiplicativeExpression
+    ( ( '+' | '-' ) multiplicativeExpression )*;
+
+multiplicativeExpression:
+    primaryExpression
+    ( ( '*' | '/' ) primaryExpression )*;
+
+primaryExpression:
     '(' expression ')'                            # parenExpr
     | ID                                          # idExpr
     | literal                                     # literalExpr
-    | expression op=('+' | '-') expression        # addSubExpr
-    | expression op=('*' | '/') expression        # mulDivExpr
     | 'getPrice' '(' ID ')'                       # getPriceExpr
     | 'getStock' '(' ID ')'                       # getStockExpr;
 

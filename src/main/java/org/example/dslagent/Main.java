@@ -1,48 +1,62 @@
 package org.example.dslagent;
 
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.*;
 import org.example.dslagent.interpreter.DSLVisitorImpl;
 import org.example.dslagent.parser.TaobaoDSLLexer;
 import org.example.dslagent.parser.TaobaoDSLParser;
-
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("🛍️ 淘宝购物DSL解释器");
-        System.out.println("======================");
-
         try {
-            // 从文件读取脚本
-            String scriptPath = args.length > 0 ? args[0] : "scripts/test.dsl";
+            // 1. 读取DSL脚本
+            String scriptPath = args.length > 0 ? args[0] : "scripts/taobao_shopping.dsl";
             String scriptContent = readScriptFile(scriptPath);
 
-            System.out.println("📖 读取脚本: " + scriptPath);
-            System.out.println("----------------------");
+            System.out.println("📖 正在解析脚本: " + scriptPath);
+            System.out.println("=".repeat(50));
 
-            // 1. 词法分析
+            // 2. 词法分析
             TaobaoDSLLexer lexer = new TaobaoDSLLexer(CharStreams.fromString(scriptContent));
 
-            // 2. 语法分析
+            // 3. 语法分析
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             TaobaoDSLParser parser = new TaobaoDSLParser(tokens);
 
-            // 3. 执行Visitor
-            DSLVisitorImpl visitor = new DSLVisitorImpl();
-            visitor.visit(parser.program());
+            // 4. 设置错误监听器
+            parser.removeErrorListeners();
+            parser.addErrorListener(new BaseErrorListener() {
+                @Override
+                public void syntaxError(Recognizer<?, ?> recognizer,
+                                        Object offendingSymbol,
+                                        int line, int charPositionInLine,
+                                        String msg, RecognitionException e) {
+                    System.err.println("❌ 语法错误 行" + line + ":" + charPositionInLine + " " + msg);
+                    System.exit(1);
+                }
+            });
 
-            System.out.println("\n✅ 脚本执行完成！");
-            System.out.println("======================");
+            // 5. 开始解析
+            TaobaoDSLParser.ProgramContext tree = parser.program();
+
+            if (parser.getNumberOfSyntaxErrors() > 0) {
+                System.err.println("发现" + parser.getNumberOfSyntaxErrors() + "个语法错误");
+                return;
+            }
+
+            // 6. 使用增强版Visitor执行
+            DSLVisitorImpl visitor = new DSLVisitorImpl();
+            visitor.visit(tree);
 
         } catch (Exception e) {
-            System.err.println("❌ 错误: " + e.getMessage());
+            System.err.println("程序执行出错: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private static String readScriptFile(String filePath) throws Exception {
+    private static String readScriptFile(String filePath) throws IOException {
         return new String(Files.readAllBytes(Paths.get(filePath)));
     }
 }
